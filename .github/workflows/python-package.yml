@@ -32,4 +32,4 @@ jobs:
           poetry install --sync
       - name: Run Parsing Script
         run: |
-          python app/main.py --country jp
+          poetry run python app/main.py --country jp
