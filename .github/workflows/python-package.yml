@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: |
           poetry install --sync
+      - name: Set environment variables
+        env:
+          WEBHOOK_URI: ${{ secrets.WEBHOOK_URI }}
       - name: Run Parsing Script
         run: |
           poetry run python app/main.py --country jp
