@@ -18,6 +18,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Run poetry
         uses: abatilo/actions-poetry@v2
         with:
@@ -27,12 +28,15 @@ jobs:
         with:
           python-version: "3.12"
           cache: "poetry"
+
       - name: Install dependencies
         run: |
           poetry install --sync
+
       - name: Set environment variables
         env:
           WEBHOOK_URI: ${{ secrets.WEBHOOK_URI }}
+
       - name: Run Parsing Script
         run: |
           poetry run python app/main.py --country jp
