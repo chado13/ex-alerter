@@ -34,7 +34,7 @@ jobs:
           poetry install --sync
 
       - name: Set environment variables
-        env:
+        env: |
           WEBHOOK_URI: ${{ secrets.WEBHOOK_URI }}
 
       - name: Run Parsing Script
