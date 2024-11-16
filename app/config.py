@@ -9,4 +9,4 @@ from dotenv import load_dotenv
 basedir = os.path.abspath(dirname(dirname(__file__)))
 load_dotenv(join(basedir, ".env"))
 
-WEBHOOK_URI = os.getenv("WEBHOOK", "")
+WEBHOOK_URI = os.getenv("WEBHOOK_URI", "")
