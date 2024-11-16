@@ -34,7 +34,7 @@ jobs:
           poetry install --sync
 
       - name: Run Parsing Script
-        env: |
+        env:
           WEBHOOK_URI: ${{ secrets.WEBHOOK_URI }}
         run: |
           poetry run python app/main.py --country jp
