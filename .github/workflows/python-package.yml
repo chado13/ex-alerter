@@ -5,12 +5,11 @@ name: exchange alerter
 
 on:
   schedule:
-    - cron: '0 0-23 * * *'
+    - cron: "0 0-23 * * *"
   workflow_dispatch:
-  
+
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -18,15 +17,19 @@ jobs:
         python-version: ["3.12"]
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        poetry install --sync
-    - name: Run Parsing Script
-      run: |
-        python app/main.py --country jp
-        
+      - uses: actions/checkout@v4
+      - name: Run poetry
+        uses: abatilo/actions-poetry@v2
+        with:
+          poetry-version: "1.8.4"
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+          cache: "poetry"
+      - name: Install dependencies
+        run: |
+          poetry install --sync
+      - name: Run Parsing Script
+        run: |
+          python app/main.py --country jp
