@@ -5,7 +5,9 @@ name: exchange alerter
 
 on:
   schedule:
-    - cron: "0 0-23 * * *"
+    - cron: "0 21-23 * * 0" # 한국 시간 월요일 오전 6시~오전 8시
+    - cron: "0 0-14 * * 1-4" # 한국 시간 월요일 오전 9시~오후 11시
+    - cron: "0 0-14 * * 5" # 한국 시간 금요일 오전 9시~오후 11시
   workflow_dispatch:
 
 jobs:
